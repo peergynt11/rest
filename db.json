@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Bernd",
+      "last_name": "Vierhuf",
+      "email": "bernd@vierhuf.de"
+    },
+    {
+      "id": 2,
+      "first_name": "Jule",
+      "last_name": "Vierhuf",
+      "email": "jule@vierhuf.de"
+    },
+    {
+      "id": 3,
+      "first_name": "Tim",
+      "last_name": "Vierhuf",
+      "email": "tim@vierhuf.de"
+    },
+    {
+      "id": 4,
+      "first_name": "Tim",
+      "last_name": "Vierhuf",
+      "email": "jana@vierhuf.de"
+    }
+  ]
+}
