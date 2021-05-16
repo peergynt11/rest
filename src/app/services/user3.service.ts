@@ -33,7 +33,7 @@ export class User3Service {
     // Return an observable with a user-facing error message.
     // window.alert('Something bad happened; please try again later.');
     return throwError(
-      'Something bad happened; please try again later.');
+      'Message from the user-service: Something bad happened; please try again later.');
   }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {

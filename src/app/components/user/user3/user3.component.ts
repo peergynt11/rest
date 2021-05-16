@@ -9,23 +9,17 @@ import { User3Service } from '../../../services/user3.service';
   template: `
   <p>user3 works!</p>
   
+  <code>observable|async
+  
+  </code> 
+
   {{errorMsg}}
   
-  <div *ngIf="users$ | async as users; else loadingOrError">
+  <div *ngIf="users$ | async as users">
     <div *ngFor="let user of users">
       {{user.email}}
     </div>
   </div> 
-
-  <ng-template #loadingOrError>
-    <div *ngIf="loadingError$ | async; else loading">
-      Error loading the list of users. Please try again later.
-    </div>
- 
-    <ng-template #loading>
-      Loading users...
-    </ng-template>
-  </ng-template>
     `,
 })
 export class User3Component implements OnInit {
@@ -36,15 +30,26 @@ export class User3Component implements OnInit {
   constructor(private userService: User3Service ) { }
 
   ngOnInit(): void {
-     this.users$ = this.getAllUsers()
-  }
+    this.users$ = this.getAllUsers()
+    this.getUsers();
+    }
 
-  // getAllUsers(): Observable<User[]> {
-  //     // this.userService.getAllUsers().subscribe( (returnValue) => console.log(returnValue))
-  //       return this.userService.getAllUsers()
-  // } 
+  getUsers(): void {
+      this.userService.getAllUsers().subscribe ( 
+       (returnValue) => console.log(returnValue),
+        (err) => console.log("Message from User3Component: An error occured", err),
+        () => console.log("Message from User3Component: Observing completed")
+      )
+  } 
+  
+  getUsers1(): void {
+    this.userService.getAllUsers().subscribe ( 
+      function (returnValue) { console.log(returnValue) },
+      (err) => console.log("Message from User3Component: An error occured", err),
+      () => console.log("Message from User3Component: Observing completed")
+    )
+} 
   getAllUsers(): Observable<User[]> {
-    // this.userService.getAllUsers().subscribe( (returnValue) => console.log(returnValue))
       return this.userService
             .getAllUsers()
             .pipe(
