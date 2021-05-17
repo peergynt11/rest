@@ -32,8 +32,7 @@ export class User4Component implements OnInit {
   }
 
   initTimer() {
-    this.timer1$.pipe(map (val => val + 10)).subscribe(x => this.zahl = x) 
-    this.timer3$.pipe(map (val => val + 10)).subscribe(x => this.currentTime = new Date().toLocaleTimeString() )
-  
+    this.timer1$.pipe(map ( (val) => val + 10)).subscribe(x => this.zahl = x) 
+    this.timer3$.subscribe( () => this.currentTime = new Date().toLocaleTimeString() )
   }
 }
